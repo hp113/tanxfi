@@ -48,31 +48,31 @@ def main():
     # calculating total revenue by month
     revenue_by_month = compute_revenue_by_month(df)
     # Since compute_revenue_by_month(df) returns a Pandas Series, convert the Series to a dataframe
-    revenue_by_month_df = revenue_by_month.reset_index()
-    revenue_by_month_df.columns = ['Month', 'Revenue']
+    # revenue_by_month_df = revenue_by_month.reset_index()
+    # revenue_by_month_df.columns = ['Month', 'Revenue']
     print("Total Revenue by Month:")
-    print(revenue_by_month_df)
+    print(revenue_by_month)
 
     # calculating total revenue by product
     revenue_by_product = compute_revenue_by_product(df)
-    revenue_by_product_df = revenue_by_product.reset_index()
-    revenue_by_product_df.columns = ['Product', 'Revenue']
+    # revenue_by_product_df = revenue_by_product.reset_index()
+    # revenue_by_product_df.columns = ['Product', 'Revenue']
     print("\nTotal revenue by product:")
-    print(revenue_by_product_df)
+    print(revenue_by_product)
 
     # calculating total revenue by customer
     revenue_by_customer = compute_revenue_by_customer(df)
-    revenue_by_customer_df = revenue_by_customer.reset_index()
-    revenue_by_customer_df.columns = ['Customer ID', 'Revenue']
+    # revenue_by_customer_df = revenue_by_customer.reset_index()
+    # revenue_by_customer_df.columns = ['Customer ID', 'Revenue']
     print("\nTotal revenue by customer:")
-    print(revenue_by_customer_df)
+    print(revenue_by_customer)
 
     # calculating top 10 customers by revenue
     top_10_customers = top_10_customers_by_revenue(revenue_by_customer)
-    top_10_customers_df= top_10_customers.reset_index()
-    top_10_customers_df.columns = ['Customer ID', 'Revenue']
+    # top_10_customers_df= top_10_customers.reset_index()
+    # top_10_customers_df.columns = ['Customer ID', 'Revenue']
     print("\nTop 10 customers by revenue:")
-    print(top_10_customers_df)
+    print(top_10_customers)
 
 
 if __name__ == "__main__":
