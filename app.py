@@ -5,7 +5,7 @@ import pandas as pd
 def load_data(file_path: str) -> pd.DataFrame:
     try:
         df = pd.read_csv(file_path)
-        print("Data loaded successfully.")
+        # print("Data loaded successfully.")
         return df
     except FileNotFoundError:
         print(f"Error: File not found at path {file_path}")
@@ -23,23 +23,23 @@ def compute_revenue_by_month(df: pd.DataFrame) -> pd.Series:
     df['month'] = df['order_date'].dt.to_period('M')
     df['total_price'] = df['product_price'] * df['quantity']
     revenue_by_month = df.groupby('month')['total_price'].sum()
-    return revenue_by_month
+    return list(revenue_by_month.items())
 
 #This function will return the total revenue by product.
 def compute_revenue_by_product(df: pd.DataFrame) -> pd.Series:
     df['total_price'] = df['product_price'] * df['quantity']
     revenue_by_product = df.groupby('product_name')['total_price'].sum().sort_values(ascending=False)
-    return revenue_by_product
+    return list(revenue_by_product.items())
 
 #This function will return total revenue by customer.
 def compute_revenue_by_customer(df: pd.DataFrame) -> pd.Series:
     df['total_price'] = df['product_price'] * df['quantity']
     revenue_by_customer = df.groupby('customer_id')['total_price'].sum().sort_values(ascending=False)
-    return revenue_by_customer
+    return list(revenue_by_customer.items())
 
 #This function will return the top 10 customers by revenue
 def top_10_customers_by_revenue(revenue_by_customer: pd.Series, top_n: int = 10) -> pd.Series:
-    return revenue_by_customer.head(top_n)
+    return list(revenue_by_customer[:top_n])
 
 
 def main():
